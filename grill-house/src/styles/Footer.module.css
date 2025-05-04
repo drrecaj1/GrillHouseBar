@@ -1,8 +1,10 @@
 /* Footer.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
 .footer {
     margin-top: 20px;
-    background-color: #ba3522;
+    /*background-color: #ba3522;*/
+    background-color: black;
     color: white;
     padding: 2rem 0;
     width: 100%;
@@ -22,15 +24,16 @@
     flex-direction: column;
 }
 
-.logo {
-    font-family: 'Impact', 'Arial Black', sans-serif;
-    font-size: 2rem;
-    font-weight: bold;
-    text-transform: uppercase;
-    margin-bottom: 0.5rem;
-    letter-spacing: 1px;
-}
+.logo img,
+.logoImage {
+    height: 130px; /* Adjust size as needed */
+    width: auto;
+    object-fit: contain;
+    display: block;
+    cursor: pointer;
 
+
+}
 .contactInfo {
     display: flex;
     gap: 2rem;
@@ -51,6 +54,8 @@
 .copyright {
     font-size: 0.9rem;
     color: rgba(255, 255, 255, 0.8);
+    font-family: "Nunito Sans", sans-serif;
+    font-style: normal;
 }
 
 .socialLinks {

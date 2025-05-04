@@ -60,6 +60,12 @@ const ContactSection = () => {
                         </div>
                     </div>
                 </div>
+
+                <img
+                    src="/media/Grill House-12.png"
+                    alt="Interior of Grill House"
+                    className={styles.contactImage}
+                />
             </div>
 
             <div className={styles.mapContainer}>

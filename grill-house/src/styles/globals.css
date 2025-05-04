@@ -1,8 +1,9 @@
 /* styles/globals.css */
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Bebas+Neue&family=Bree+Serif&family=Koulen&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
-html {
+html, body{
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 /* Reset some default styles */
@@ -15,7 +16,7 @@ html {
 body {
   font-family: 'Copperplate', sans-serif;
   font-weight: 700;
-  background-color: #F8F6E8;
+  background-color: #F8F8F2;
   color: #333;
   line-height: 1.6;
 }

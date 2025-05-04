@@ -10,7 +10,15 @@ const Header = () => {
                     <li><Link href="/" className={styles.navLink}>HOME</Link></li>
                     <li><Link href="/#about" className={styles.navLink}>ABOUT US</Link></li>
                     <li><Link href="/#menu" className={styles.navLink}>MENU</Link></li>
-                    <li className={styles.logo}>LOGO ( IN WHITE )</li>
+                    <li className={styles.logo}>
+                        <Link href="/">
+                            <img
+                                src="/media/Grill House Logo.png"  // Adjust the path as needed
+                                alt="Company Logo"
+                                className={styles.logoImage}
+                            />
+                        </Link>
+                    </li>
                     <li><Link href="/#reservation" className={styles.navLink}>Reserve</Link></li>
                     <li><Link href="/#gallery" className={styles.navLink}>PHOTO GALLERY</Link></li>
                     <li><Link href="/#contact" className={styles.navLink}>CONTACT</Link></li>

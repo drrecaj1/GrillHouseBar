@@ -3,7 +3,7 @@ import styles from '@/styles/HeroSection.module.css';
 
 const HeroSection = () => {
     return (
-        <section className={styles.hero}>
+        <section id="hero" className={styles.hero}>
             <div className={styles.bgOverlay}></div>
             <div className={styles.heroContent}>
                 <h1 className={styles.heading}>PEOPLE WHO LOVE TO EAT</h1>

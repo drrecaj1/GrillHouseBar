@@ -1,12 +1,19 @@
 import React from 'react';
 import styles from '@/styles/Footer.module.css';
+import Link from "next/link";
 
 const Footer = () => {
     return (
         <footer className={styles.footer}>
             <div className={styles.container}>
                 <div className={styles.footerLeft}>
-                    <div className={styles.logo}>Logo</div>
+                    <div className={styles.logo}><Link href="/#hero">
+                        <img
+                            src="/media/Grill House Logo.png"  // Adjust the path as needed
+                            alt="Company Logo"
+                            className={styles.logoImage}
+                        />
+                    </Link></div>
                     <div className={styles.contactInfo}>
                         <div className={styles.contactItem}>
               <span className={styles.icon}>

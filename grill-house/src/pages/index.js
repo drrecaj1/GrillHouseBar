@@ -6,6 +6,7 @@ import MenuSection from './components/MenuSection';
 import ReservationForm from './components/ReservationForm';
 import ContactSection from './components/ContactSection';
 import Footer from './components/Footer';
+import Gallery from './components/Gallery';
 
 export default function Home() {
     return (
@@ -15,6 +16,7 @@ export default function Home() {
             <RestaurantInfoSection />
             <MenuSection />
             <ReservationForm />
+            <Gallery />
             <ContactSection />
             <Footer />
         </div>

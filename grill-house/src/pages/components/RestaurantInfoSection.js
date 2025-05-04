@@ -35,6 +35,7 @@ const RestaurantInfoSection = () => {
                         <p className={styles.hoursText}>Kitchen open everyday until 20:00</p>
                         <button className={styles.reserveBtn}>Reserve Now</button>
                     </div>
+
                 </div>
             </div>
         </section>

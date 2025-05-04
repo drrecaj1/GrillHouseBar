@@ -36,16 +36,26 @@
     letter-spacing: 1px;
     transition: color 0.3s ease;
 }
-
+.navLinks {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    list-style: none;
+    gap: 1rem;
+}
 .navLink:hover {
     color: rgba(255, 255, 255, 0.7);
 }
 
-.logo {
-    color: white;
-    font-weight: 700;
-    letter-spacing: 1px;
-    font-size: 14px;
+.logo img,
+.logoImage {
+    height: 130px; /* Adjust size as needed */
+    width: auto;
+    object-fit: contain;
+    display: block;
+    cursor: pointer;
+
+
 }
 
 @media (max-width: 1024px) {
