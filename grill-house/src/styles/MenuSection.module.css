@@ -1,0 +1,103 @@
+.menuSection {
+    padding: 40px;
+    /*background-color: #fff;*/
+    background-image: url("/media/menubackground.jpg");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 80vh;
+    z-index: 1;
+}
+
+.menuHeader {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.titleContainer {
+    /*width: 1000px;*/
+    border: 10px solid transparent; /* Base border size */
+    border-image: url('/media/textcontainer.png') 40 round;
+    padding: 1rem;
+}
+
+.mainTitle {
+    font-size: 32px;
+    font-weight: bold;
+    color: #FFFFFF;
+
+}
+
+.menuContainer {
+    display: flex;
+    justify-content: center;
+
+}
+
+.menuGrid {
+    display: flex;
+    gap: 40px;
+    flex-wrap: wrap;
+    justify-content: center;
+}
+
+.menuColumn {
+    background-color: rgba(255, 255, 255, 0.8);
+    padding: 30px;
+    width: 397px;
+    height: auto;
+    border-radius: 10px;
+
+}
+
+.columnTitle {
+    font-size: 24px;
+    margin-bottom: 20px;
+    text-align: center;
+    color: #c0392b;
+}
+
+.menuItems {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+}
+
+.menuItem {
+    border-bottom: 1px solid #ccc;
+    padding-bottom: 15px;
+}
+
+.itemHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.itemName {
+    font-weight: bold;
+    font-size: 20px;
+}
+
+.priceContainer {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.priceLine {
+    width: 180px;
+    height: 1px;
+    background-color: #000;
+}
+
+.itemPrice {
+    font-weight: bold;
+}
+
+.itemDescription {
+    font-size: 14px;
+    color: #666;
+    margin-top: 5px;
+}

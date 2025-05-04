@@ -1,0 +1,55 @@
+/* styles/Header.module.css */
+
+.header {
+    position: absolute;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    padding: 20px 0;
+}
+
+.navbar {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.navLinks {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+
+.navLinks li {
+    margin: 0;
+}
+
+.navLink {
+    color: white;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    letter-spacing: 1px;
+    transition: color 0.3s ease;
+}
+
+.navLink:hover {
+    color: rgba(255, 255, 255, 0.7);
+}
+
+.logo {
+    color: white;
+    font-weight: 700;
+    letter-spacing: 1px;
+    font-size: 14px;
+}
+
+@media (max-width: 1024px) {
+    .navLinks {
+        display: none;
+    }
+}

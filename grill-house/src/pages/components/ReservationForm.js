@@ -1,26 +1,25 @@
 import { useState } from 'react';
 import DatePicker from 'react-datepicker';
 import 'react-datepicker/dist/react-datepicker.css';
+import styles from '@/styles/Form.module.css';
 
 const ReservationForm = () => {
-    const [startDate, setStartDate] = useState(null); // State for selected date and time
-    const [numberOfGuests, setNumberOfGuests] = useState(''); // State for number of guests
-    const [fullName, setFullName] = useState(''); // State for full name
-    const [email, setEmail] = useState(''); // State for email
-    const [diningOption, setDiningOption] = useState('indoor'); // State for dining option
-    const [eventType, setEventType] = useState('birthday'); // State for event type
-    const [specialRequests, setSpecialRequests] = useState(''); // State for special requests
+    const [startDate, setStartDate] = useState(null);
+    const [numberOfGuests, setNumberOfGuests] = useState('');
+    const [fullName, setFullName] = useState('');
+    const [email, setEmail] = useState('');
+    const [diningOption, setDiningOption] = useState('indoor');
+    const [eventType, setEventType] = useState('birthday');
+    const [specialRequests, setSpecialRequests] = useState('');
 
-    const handleDateChange = (date) => {
-        setStartDate(date);
-    };
+    const handleDateChange = (date) => setStartDate(date);
 
     return (
-        <section className="reservation-form">
-            <h2>MAKE A RESERVATION</h2>
-            <form>
-                <div className="form-container">
-                    <div className="form-group">
+        <section className={styles.reservationForm} id="reservation">
+            <form className={styles.form}>
+                <h2 className={styles.formTitle}>MAKE A RESERVATION</h2>
+                <div className={styles.formContainer}>
+                    <div className={styles.formGroup}>
                         <label>Full Name:</label>
                         <input
                             type="text"
@@ -30,7 +29,7 @@ const ReservationForm = () => {
                         />
                     </div>
 
-                    <div className="form-group">
+                    <div className={styles.formGroup}>
                         <label>Email:</label>
                         <input
                             type="email"
@@ -40,7 +39,7 @@ const ReservationForm = () => {
                         />
                     </div>
 
-                    <div className="form-group">
+                    <div className={styles.formGroup}>
                         <label>No. of Guests:</label>
                         <input
                             type="number"
@@ -50,7 +49,7 @@ const ReservationForm = () => {
                         />
                     </div>
 
-                    <div className="form-group">
+                    <div className={styles.formGroup}>
                         <label>Dining Option:</label>
                         <select
                             value={diningOption}
@@ -63,7 +62,7 @@ const ReservationForm = () => {
                         </select>
                     </div>
 
-                    <div className="form-group">
+                    <div className={styles.formGroup}>
                         <label>Date & Time:</label>
                         <DatePicker
                             selected={startDate}
@@ -71,10 +70,11 @@ const ReservationForm = () => {
                             showTimeSelect
                             dateFormat="Pp"
                             placeholderText="Select a date and time"
+                            className={styles.datePicker}
                         />
                     </div>
 
-                    <div className="form-group">
+                    <div className={styles.formGroup}>
                         <label>Event Type:</label>
                         <select
                             value={eventType}
@@ -88,7 +88,7 @@ const ReservationForm = () => {
                         </select>
                     </div>
 
-                    <div className="form-group" style={{ flex: '1 1 100%' }}>
+                    <div className={`${styles.formGroup} ${styles.fullWidth}`}>
                         <label>Message:</label>
                         <textarea
                             placeholder="Any special requests?"
@@ -98,7 +98,9 @@ const ReservationForm = () => {
                     </div>
                 </div>
 
-                <button type="submit">Reserve Now</button>
+                <button type="submit" className={styles.submitButton}>
+                    Reserve Now
+                </button>
             </form>
         </section>
     );

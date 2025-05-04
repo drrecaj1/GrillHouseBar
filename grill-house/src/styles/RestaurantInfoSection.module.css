@@ -1,0 +1,130 @@
+/* styles/RestaurantInfoSection.module.css */
+.infoSection {
+    background-color: #f8f5e9;
+    padding: 30px;
+    width: 100%;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+
+.leftColumn {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    position: relative;
+    background-color: #000;
+    color: white;
+    background-image: url('/media/grilled-food.jpg');
+    background-size: cover;
+    background-position: center;
+    background-blend-mode: overlay;
+    padding: 40px;
+}
+
+.rightColumn {
+    flex: 1;
+    min-width: 300px;
+    display: flex;
+    flex-direction: column;
+}
+
+.restaurantStory {
+    max-width: 500px;
+    padding: 60px 40px;
+    z-index: 1;
+}
+
+.storyTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    line-height: 1.2;
+    text-transform: uppercase;
+}
+
+.storyText {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 20px;
+}
+
+.logoSection {
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 60px 40px;
+    min-height: 300px;
+}
+
+.logoText {
+    font-size: 2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    color: #000;
+}
+
+.openingHours {
+    background-color: #3a614d;
+    color: white;
+    padding: 60px 40px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.hoursTitle {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+}
+
+.hoursText {
+    font-size: 1.1rem;
+    margin-bottom: 10px;
+    line-height: 1.6;
+}
+
+.reserveBtn {
+    background-color: white;
+    color: #8B2703;
+    border: none;
+    border-radius: 50px;
+    padding: 12px 25px;
+    font-size: 1rem;
+    font-weight: 500;
+    text-transform: uppercase;
+    cursor: pointer;
+    margin-top: 30px;
+    max-width: 180px;
+    transition: all 0.3s ease;
+}
+
+.reserveBtn:hover {
+    background-color: #f1f1f1;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+    }
+
+    .restaurantStory,
+    .logoSection,
+    .openingHours {
+        padding: 40px 20px;
+    }
+
+    .storyTitle,
+    .hoursTitle {
+        font-size: 1.8rem;
+    }
+}
