@@ -191,4 +191,31 @@
 }
 
 
+.priceEstimate {
+    /*background-color: #e1e1e1;*/
+    width: 100%;
+    background-color: #eaeaea; /* optional for visibility */
+    padding: 1rem;
+    border-radius: 12px; /* ← this gives it a nice rounded corner */
+    border: 1px solid #ddd; /* optional for a subtle border */
+    margin-top: 1rem;
+
+}
+
+.priceRow {
+    display: flex;
+    align-items: center;
+    gap: 8px; /* Space between icon and text */
+}
+
+.infoIcon {
+    color: #888;
+    font-size: 1.1rem;
+    cursor: pointer;
+}
+
+.priceText {
+    margin: 0;
+}
+
 

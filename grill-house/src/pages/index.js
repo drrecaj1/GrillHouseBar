@@ -1,4 +1,4 @@
-// pages/index.js
+
 import Header from './components/Header';
 import HeroSection from './components/HeroSection';
 import RestaurantInfoSection from './components/RestaurantInfoSection';

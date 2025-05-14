@@ -1,0 +1,268 @@
+/* AdminLayout.module.css */
+
+/* Main container for admin layout */
+.adminContainer {
+    display: flex;
+    min-height: 100vh;
+    background-color: #f5f7fa;
+}
+
+/* Sidebar styles */
+.sidebar {
+    width: 280px;
+    background-color: #1e293b;
+    color: #fff;
+    transition: all 0.3s ease;
+    position: fixed;
+    height: 100vh;
+    z-index: 100;
+    box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
+    overflow-y: auto;
+}
+
+/* Collapsed sidebar state */
+.sidebarCollapsed {
+    width: 80px;
+}
+
+/* Sidebar header */
+.sidebarHeader {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 1.5rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.logoIcon {
+    width: 30px;
+    height: 30px;
+}
+
+.logoText {
+    transition: opacity 0.3s ease;
+}
+
+.sidebarCollapsed .logoText {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+.hamburger {
+    background: none;
+    border: none;
+    color: #fff;
+    cursor: pointer;
+    display: flex;
+    font-size: 1.5rem;
+    padding: 0.5rem;
+}
+
+/* Navigation menu */
+.nav {
+    padding: 1rem 0;
+}
+
+.navItem {
+    padding: 0;
+    margin: 0.25rem 0;
+    list-style-type: none;
+}
+
+.navLink {
+    display: flex;
+    align-items: center;
+    padding: 0.75rem 1.5rem;
+    color: rgba(255, 255, 255, 0.7);
+    text-decoration: none;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    gap: 0.75rem;
+    border-left: 3px solid transparent;
+}
+
+.navLink:hover {
+    background-color: rgba(255, 255, 255, 0.05);
+    color: #fff;
+}
+
+.activeLink {
+    background-color: rgba(255, 255, 255, 0.08);
+    color: #fff;
+    border-left: 3px solid #3b82f6;
+}
+
+.navIcon {
+    font-size: 1.25rem;
+    min-width: 24px;
+    text-align: center;
+}
+
+.navText {
+    transition: opacity 0.3s ease;
+}
+
+.sidebarCollapsed .navText {
+    opacity: 0;
+    width: 0;
+    overflow: hidden;
+}
+
+/* Main content area */
+.main {
+    flex: 1;
+    margin-left: 280px;
+    transition: margin 0.3s ease;
+    padding: 1rem;
+    max-width: calc(100% - 280px);
+}
+
+.mainExpanded {
+    margin-left: 80px;
+    max-width: calc(100% - 80px);
+}
+
+/* Top navigation bar */
+.topbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+    margin-bottom: 2rem;
+}
+
+.pageTitle {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+}
+
+.userMenu {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.userInfo {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.userAvatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #e2e8f0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 600;
+    color: #1e293b;
+}
+
+.userName {
+    font-weight: 500;
+}
+
+.userRole {
+    font-size: 0.8rem;
+    color: #64748b;
+}
+
+.logoutButton {
+    background-color: #f3f4f6;
+    border: none;
+    border-radius: 6px;
+    padding: 0.5rem 1rem;
+    font-weight: 500;
+    color: #64748b;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.logoutButton:hover {
+    background-color: #e5e7eb;
+    color: #4b5563;
+}
+
+/* Content container */
+.content {
+    padding: 1rem;
+}
+
+/* Mobile styles */
+.mobileMenuButton {
+    display: none;
+    background: none;
+    border: none;
+    color: #333;
+    font-size: 1.5rem;
+    cursor: pointer;
+}
+
+.overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 90;
+    display: none;
+}
+
+.overlayActive {
+    display: block;
+}
+
+/* Responsive adjustments */
+@media (max-width: 1024px) {
+    .sidebar {
+        transform: translateX(-100%);
+    }
+
+    .sidebarOpen {
+        transform: translateX(0);
+    }
+
+    .main {
+        margin-left: 0;
+        max-width: 100%;
+    }
+
+    .mainExpanded {
+        margin-left: 0;
+        max-width: 100%;
+    }
+
+    .mobileMenuButton {
+        display: block;
+    }
+}
+
+@media (max-width: 640px) {
+    .topbar {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: flex-start;
+    }
+
+    .userMenu {
+        width: 100%;
+        justify-content: space-between;
+    }
+}
