@@ -10,6 +10,7 @@
   },
   "dependencies": {
     "@popperjs/core": "^2.11.8",
+    "bcrypt": "^6.0.0",
     "chart.js": "^4.4.9",
     "date-fns": "^4.1.0",
     "lucide-react": "^0.510.0",
