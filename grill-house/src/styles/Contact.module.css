@@ -1,0 +1,87 @@
+.contactSection {
+    margin-top: 1rem;
+    padding: 1rem;
+    /*max-width: 600px;*/
+    margin-inline: auto;
+    background-image: url("/media/contactformbckg.png");
+    background-repeat: no-repeat;
+    background-position: bottom center;
+    background-size: cover;
+    padding: 5rem 1rem 8rem; /* extra bottom space to reach footer */
+}
+
+
+.subtitle {
+    font-size: 1rem;
+    color: #555;
+    text-align: center;
+    margin-bottom: 2rem;
+    line-height: 1.6;
+    font-family: 'Inter', sans-serif; /* or any other font */
+    font-weight: 400;
+    font-style: italic; /* optional: adds a nice tone */
+}
+
+
+
+.heading {
+    font-size: 1.75rem;
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
+    max-width: 600px;
+    margin-inline: auto;
+
+}
+
+.inputGroup {
+    display: flex;
+    flex-direction: column;
+}
+
+.inputGroup label {
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+    color: #333;
+}
+
+.inputGroup input,
+.inputGroup textarea {
+    padding: 0.75rem 1rem;
+    border: 1px solid #ccc;
+    border-radius: 12px;
+    font-size: 1rem;
+    transition: border 0.2s ease;
+}
+
+.inputGroup input:focus,
+.inputGroup textarea:focus {
+    border-color: #666;
+    outline: none;
+}
+
+.inputGroup textarea {
+    resize: vertical;
+    min-height: 100px;
+}
+
+.submitButton {
+    padding: 0.75rem;
+    background-color: #BF1C0E;
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.submitButton:hover {
+    background-color: #8e1007;
+}

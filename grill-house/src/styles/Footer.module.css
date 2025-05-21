@@ -2,9 +2,9 @@
 @import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:ital,opsz,wght@0,6..12,200..1000;1,6..12,200..1000&display=swap');
 
 .footer {
-    margin-top: 20px;
+    /*margin-top: 20px;*/
     /*background-color: #ba3522;*/
-    background-color: black;
+    background-color: #232322;
     color: white;
     padding: 2rem 0;
     width: 100%;

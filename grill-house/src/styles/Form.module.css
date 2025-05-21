@@ -218,4 +218,7 @@
     margin: 0;
 }
 
-
+.submitButton {
+    z-index: 10;
+    position: relative;
+}

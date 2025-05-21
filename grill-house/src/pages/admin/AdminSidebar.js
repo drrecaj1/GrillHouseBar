@@ -1,10 +1,16 @@
 import { useState } from 'react';
 import Link from 'next/link';
-import { LayoutDashboard, ClipboardList, LogOut, Menu } from 'lucide-react';
+import { LayoutDashboard, ClipboardList, LogOut, Mail, Menu } from 'lucide-react';
+import { useRouter } from 'next/router';
 
 export default function AdminSidebar() {
     const [isOpen, setIsOpen] = useState(false);
+    const router = useRouter();
 
+    const handleLogout = async () => {
+        await fetch('/api/admin-logout');        // ✅ clear cookie
+        router.push('/admin/login');             // ✅ go to login page
+    };
 
     return (
         <div style={{ display: 'flex' }}>
@@ -34,10 +40,14 @@ export default function AdminSidebar() {
                         <ClipboardList size={24} />
                         {isOpen && <span style={textStyle}>Reservations</span>}
                     </Link>
-                    <Link href="/admin/login" style={linkStyle}>
+                    <Link href="/admin/inquiries" style={linkStyle}>
+                        <Mail size={24} />
+                        {isOpen && <span style={textStyle}>Inquiries</span>}
+                    </Link>
+                    <div onClick={handleLogout} style={{ ...linkStyle, cursor: 'pointer' }}>
                         <LogOut size={24} />
                         {isOpen && <span style={textStyle}>Logout</span>}
-                    </Link>
+                    </div>
                 </nav>
             </div>
         </div>
