@@ -1,31 +1,32 @@
-// components/Header.js
 import Link from 'next/link';
 import styles from '@/styles/Header.module.css';
+import { FaFacebookF, FaTwitter, FaInstagram } from 'react-icons/fa';
 
-const Header = () => {
+export default function Header() {
     return (
         <header className={styles.header}>
-            <nav className={styles.navbar}>
-                <ul className={styles.navLinks}>
-                    <li><Link href="/" className={styles.navLink}>HOME</Link></li>
-                    <li><Link href="/#about" className={styles.navLink}>ABOUT US</Link></li>
-                    <li><Link href="/#menu" className={styles.navLink}>MENU</Link></li>
-                    <li className={styles.logo}>
-                        <Link href="/">
-                            <img
-                                src="/media/Grill House Logo.png"  // Adjust the path as needed
-                                alt="Company Logo"
-                                className={styles.logoImage}
-                            />
-                        </Link>
-                    </li>
-                    <li><Link href="/#reservation" className={styles.navLink}>Reserve</Link></li>
-                    <li><Link href="/#gallery" className={styles.navLink}>PHOTO GALLERY</Link></li>
-                    <li><Link href="/#contact" className={styles.navLink}>CONTACT</Link></li>
-                </ul>
-            </nav>
+            <div className={styles.header}>
+                <div className={styles.navContainer}>
+                    <div className={styles.logo}>
+                        <img src="/media/Grill House-2.png" />
+                    </div>
+
+                    <nav className={styles.navLinks}>
+                        <a className={styles.link} href="#">Home</a>
+                        <a className={styles.link} href="#about">About</a>
+                        <a className={styles.link} href="#menu">Menus</a>
+                        <a className={styles.link} href="#gallery">Gallery</a>
+                        <a className={styles.link} href="#contact">Contact</a>
+                        <a className={styles.reservation} href="#reservation">Reservations</a>
+                    </nav>
+
+                    <div className={styles.socialIcons}>
+                        <FaInstagram />
+                        <FaFacebookF />
+                        <FaTwitter />
+                    </div>
+                </div>
+            </div>
         </header>
     );
-};
-
-export default Header;
+}

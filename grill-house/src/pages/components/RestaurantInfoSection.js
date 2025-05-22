@@ -26,7 +26,7 @@ const RestaurantInfoSection = () => {
 
                 <div className={styles.rightColumn}>
                     <div className={styles.logoSection}>
-                        <h2 className={styles.logoText}>LOGO QITU PO DU ME NAJ BG</h2>
+                        <h2 className={styles.logoText}><img className={styles.infoLogo} src={"/media/logo2.png"}/></h2>
                     </div>
 
                     <div className={styles.openingHours}>

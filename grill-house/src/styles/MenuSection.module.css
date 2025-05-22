@@ -1,17 +1,23 @@
+#menu {
+    scroll-margin-top: 1000px; /* adjust based on your header height */
+}
+
 .menuSection {
+    scroll-margin-top: 45px;
+    width: 100%;
     padding: 40px;
     /*background-color: #fff;*/
     background-image: url("/media/menubackground.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    height: 80vh;
+    height: 95vh;
     z-index: 1;
 }
 
 .menuHeader {
     text-align: center;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 .titleContainer {
@@ -31,6 +37,7 @@
 .menuContainer {
     display: flex;
     justify-content: center;
+    height: 55vh;
 
 }
 
@@ -44,7 +51,7 @@
 .menuColumn {
     background-color: rgba(255, 255, 255, 0.8);
     padding: 30px;
-    width: 397px;
+    width: 399px;
     height: auto;
     border-radius: 10px;
 

@@ -1,215 +1,55 @@
-/* Gallery Container */
-
-.fullGallery {
+.gallerySection {
+    scroll-margin-top: 65px;
+    width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    height: 90vh;
     background-color: inherit;
-}
-.galleryContainer {
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 2rem 1rem;
-    position: relative;
-
-}
-
-.galleryTitle {
-    font-size: 2rem;
-    font-weight: bold;
-    text-align: center;
-    margin-bottom: 1.5rem;
-}
-
-/* Carousel */
-.carouselContainer {
-    position: relative;
-    width: 100%;
-    height: 600px;
+    padding: 0.5rem 0; /* reduced further */
     overflow: hidden;
-    border-radius: 8px;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.carouselWrapper {
-    position: relative;
-    width: 100%;
-    max-width: 1200px;
-    margin: 0 auto;
-    height: 600px;
-}
-
-
-.carousel {
-    position: relative;
-    width: 100%;
-    height: 150%;
-}
-
-.slide {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    opacity: 0;
-    transition: opacity 0.5s ease-in-out;
-    z-index: 0;
-}
-
-.activeSlide {
-    opacity: 1;
-    z-index: 10;
-}
-
-.slideInner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-}
-
-.slideImage {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Navigation Buttons */
-.navButton {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    z-index: 20;
-    background-color: transparent;
-    color: #000; /* Changed to black */
-    font-weight: bold;
-    font-size: 32px; /* Increased size for better visibility */
-    border: none;
-    width: 40px;
-    height: 40px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-
-.navButton:hover {
-    background-color: rgba(255, 255, 255, 0.8);
-}
-
-.navButton:disabled {
-    opacity: 0.5;
-    cursor: default;
-}
-
-.prevButton {
-    left: -50px;
-}
-
-.nextButton {
-    right: -50px;
-}
-
-/* Indicators */
-.indicators {
-    position: absolute;
-    bottom: 4rem;
-    left: 0;
-    right: 0;
-    /*color: black;*/
+.row {
     display: flex;
     justify-content: center;
-    gap: 0.5rem;
-    z-index: 20;
-}
-
-.indicator {
-    width: 12px;
-    height: 12px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
-    border: none;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-
-.indicator:hover {
-    background-color: rgba(255, 255, 255, 0.7);
-}
-
-.activeIndicator {
-    background-color: white;
-    transform: scale(1.25);
-}
-
-/* Thumbnails */
-.thumbnailsContainer {
-    margin-top: 1rem;
-    display: flex;
-    justify-content: center;
-    gap: 0.5rem;
-    padding: 0.5rem 0;
-    overflow-x: auto;
-}
-
-.thumbnail {
-    flex-shrink: 0;
-    width: 80px;
-    height: 50px; /* Make thumbnails more rectangular */
-    border-radius: 4px;
-    overflow: hidden;
-    border: none;
-    opacity: 0.7;
-    transition: all 0.3s ease;
-    cursor: pointer;
+    gap: 0;
     padding: 0;
+    margin: 0;
+    height: 30vh; /* adjusted to allow space for overlay */
 }
 
-
-.thumbnail:hover {
-    opacity: 1;
-}
-
-.activeThumbnail {
-    opacity: 1;
-    box-shadow: 0 0 0 2px #3b82f6;
-    transform: scale(1.1);
-}
-
-.thumbnailImage {
-    width: 100%;
+.image {
+    flex: 1;
     height: 100%;
     object-fit: cover;
+    border-radius: 0;
+    transition: transform 0.3s ease;
 }
 
-/* Responsive styles */
-@media (max-width: 768px) {
-    .carouselContainer {
-        height: 200px; /* Reduced height for more rectangular appearance on tablets */
-    }
-
-    .caption p {
-        font-size: 1rem;
-    }
-
-    .thumbnail {
-        width: 60px;
-        height: 40px; /* Make thumbnails rectangular too */
-    }
+.image:hover {
+    transform: scale(1.03);
 }
 
-@media (max-width: 480px) {
-    .galleryTitle {
-        font-size: 1.5rem;
-    }
+.overlay {
+    background-color: black;
+    color: white;
+    text-align: center;
+    padding: 50px 20px;
 
-    .carouselContainer {
-        height: 250px;
-    }
+}
 
-    .navButton {
-        width: 32px;
-        height: 32px;
-    }
+.overlay h2 {
+    font-size: 2.5rem;
+    font-weight: bold;
+    margin-bottom: 1rem;
+}
+
+.overlay p {
+    font-size: 1rem;
+    max-width: 700px;
+    margin: 0 auto;
+    line-height: 1.5;
+    font-weight: 500;
 }

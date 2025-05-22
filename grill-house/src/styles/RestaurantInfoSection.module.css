@@ -1,8 +1,10 @@
 /* styles/RestaurantInfoSection.module.css */
 .infoSection {
+    scroll-margin-top: 30px;
     background-color: #f8f5e9;
     padding: 30px;
     width: 100%;
+
 }
 
 .container {
@@ -109,7 +111,8 @@
 }
 
 .reserveBtn:hover {
-    background-color: #f1f1f1;
+    background-color: rgba(236, 232, 232, 0.56);
+    color: #3a614d;
 }
 
 @media (max-width: 768px) {
@@ -127,4 +130,10 @@
     .hoursTitle {
         font-size: 1.8rem;
     }
+}
+
+
+.infoLogo {
+    width: 250px;
+    height: auto;
 }

@@ -38,45 +38,45 @@ export default function ContactForm() {
             </p>
             <form onSubmit={handleSubmit} className={styles.form}>
                 <div className={styles.inputGroup}>
-                    <label htmlFor="fullName">Full Name</label>
                     <input
                         name="fullName"
                         id="fullName"
                         required
+                        placeholder="Full Name"
                         value={formData.fullName}
                         onChange={handleChange}
                     />
                 </div>
 
                 <div className={styles.inputGroup}>
-                    <label htmlFor="email">Email</label>
                     <input
                         name="email"
                         type="email"
                         id="email"
                         required
+                        placeholder="Email"
                         value={formData.email}
                         onChange={handleChange}
                     />
                 </div>
 
                 <div className={styles.inputGroup}>
-                    <label htmlFor="phone">Phone Number</label>
                     <input
                         name="phone"
                         id="phone"
+                        placeholder="Phone Number"
                         value={formData.phone}
                         onChange={handleChange}
                     />
                 </div>
 
                 <div className={styles.inputGroup}>
-                    <label htmlFor="message">Your Message</label>
                     <textarea
                         name="message"
                         id="message"
                         rows={4}
                         required
+                        placeholder="Your Message"
                         value={formData.message}
                         onChange={handleChange}
                     />

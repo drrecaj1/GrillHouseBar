@@ -1,13 +1,17 @@
 .contactSection {
-    margin-top: 1rem;
-    padding: 1rem;
-    /*max-width: 600px;*/
-    margin-inline: auto;
-    background-image: url("/media/contactformbckg.png");
+    width: 100%;
+    height: 90vh;
+    margin: 0 auto;
+    padding: 5rem 0 0 0;
+    background-image: url("/media/Grill House-formbckg.png");
     background-repeat: no-repeat;
-    background-position: bottom center;
+    background-position: center top 80px; /* 👈 shift image down */
     background-size: cover;
-    padding: 5rem 1rem 8rem; /* extra bottom space to reach footer */
+
+}
+
+.contactSection form {
+    padding-bottom: 6rem; /* enough space above the footer */
 }
 
 
@@ -25,9 +29,9 @@
 
 
 .heading {
-    font-size: 1.75rem;
+    font-size: 2.5rem;
     font-weight: 700;
-    margin-bottom: 1.5rem;
+    margin-bottom: 2rem;
     text-align: center;
 }
 
@@ -84,4 +88,17 @@
 
 .submitButton:hover {
     background-color: #8e1007;
+}
+
+.inputGroup input,
+.inputGroup textarea {
+    font-family: 'Copperplate', sans-serif;
+}
+.inputGroup input::placeholder,
+.inputGroup textarea::placeholder {
+    font-family: 'Copperplate', sans-serif;
+    font-size: 0.9rem;
+    font-weight: bold;
+    color: rgba(51, 51, 51, 0.55);
+    opacity: 1;
 }
