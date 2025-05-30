@@ -1,5 +1,6 @@
 // ✅ /pages/api/contact.js
-import clientPromise from '../../../lib/mongo';
+import connectMongo from '../../lib/connectMongo';
+import Inquiry from '../../models/Inquiry';
 import nodemailer from 'nodemailer';
 
 export default async function handler(req, res) {
@@ -14,11 +15,9 @@ export default async function handler(req, res) {
     }
 
     try {
-        const client = await clientPromise;
-        const db = client.db('grillhouse');
-        const collection = db.collection('inquiries');
+        await connectMongo();
 
-        await collection.insertOne({
+        await Inquiry.create({
             fullName,
             email,
             phone,

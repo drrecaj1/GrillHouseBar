@@ -222,7 +222,7 @@ export default function AdminReservations() {
                     </button>
                 )}
 
-                {/* Add Reservation Modal */}
+                {/* Add Reservation.js Modal */}
                 {showForm && (
                     <div style={{
                         position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
@@ -245,7 +245,7 @@ export default function AdminReservations() {
                                     }),
                                 });
                                 if (res.ok) {
-                                    alert('Reservation added!');
+                                    alert('Reservation.js added!');
                                     setShowForm(false);
                                     setFormData({
                                         fullName: '', email: '', numberOfGuests: '',

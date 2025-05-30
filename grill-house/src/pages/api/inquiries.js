@@ -1,15 +1,12 @@
 // ✅ pages/api/inquiries.js
-import clientPromise from '../../../lib/mongo';
-import { ObjectId } from 'mongodb';
+import connectMongo from '../../lib/connectMongo';
+import Inquiry from '../../models/Inquiry';
 
 export default async function handler(req, res) {
-    const client = await clientPromise;
-    const db = client.db('grillhouse');
-    const collection = db.collection('inquiries');
-
+    await connectMongo();
     if (req.method === 'GET') {
         try {
-            const inquiries = await collection.find({}).sort({ createdAt: -1 }).toArray();
+            const inquiries = await Inquiry.find({}).sort({ createdAt: -1 });
             res.status(200).json(inquiries);
         } catch (error) {
             console.error('Error fetching inquiries:', error);
@@ -24,8 +21,8 @@ export default async function handler(req, res) {
         }
 
         try {
-            const result = await collection.updateOne(
-                { _id: new ObjectId(id) },
+            const result = await Inquiry.updateOne(
+                { _id: id },
                 { $set: { resolved: resolved } }
             );
 

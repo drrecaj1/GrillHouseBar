@@ -1,8 +1,11 @@
-import clientPromise from '../../../lib/mongo';
+import connectMongo from '../../lib/connectMongo';
+import Admin from '../../models/Admin';
 import bcrypt from 'bcryptjs';
 import { serialize } from 'cookie';
 
 export default async function handler(req, res) {
+    await connectMongo();
+
     if (req.method !== 'POST') {
         return res.status(405).json({ message: 'Method not allowed' });
     }
@@ -13,9 +16,7 @@ export default async function handler(req, res) {
     }
 
     try {
-        const client = await clientPromise;
-        const db = client.db('grillhouse');
-        const admin = await db.collection('admins').findOne({ username });
+        const admin = await Admin.findOne({ username });
 
         if (!admin) {
             return res.status(401).json({ message: 'Invalid credentials' });

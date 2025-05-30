@@ -2,32 +2,31 @@
 // To initiate the admin run: node lib/create-admin.js
 
 
-const { MongoClient } = require('mongodb');
+require('dotenv').config({ path: require('path').resolve(__dirname, '../.env.local') });
+const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
+const Admin = require('../src/models/Admin').default;
 
-const MONGODB_URI = 'mongodb://localhost:27017/GrillHouseDB';
-const DB_NAME = 'grillhouse'; // Database name
-const ADMIN_COLLECTION = 'admins';
+const MONGODB_URI = process.env.MONGODB_URI;
 
 async function main() {
     try {
-        const username = 'admin2';
-        const password = 'Admin123';
+        await mongoose.connect(MONGODB_URI, {
+            useNewUrlParser: true,
+            useUnifiedTopology: true,
+        });
+        const username = 'Manager';
+        const password = 'grillhouse123';
         const hashedPassword = await bcrypt.hash(password, 10);
 
-        const client = new MongoClient(MONGODB_URI);
-        await client.connect();
-        const db = client.db(DB_NAME);
-        const admins = db.collection(ADMIN_COLLECTION);
-
-        const existing = await admins.findOne({ username });
+        const existing = await Admin.findOne({ username });
         if (existing) {
             console.log('Admin with this username already exists.');
         } else {
-            await admins.insertOne({ username, password: hashedPassword });
+            await Admin.create({ username, password: hashedPassword });
             console.log('Admin user created successfully!');
         }
-        await client.close();
+        await mongoose.connection.close();
     } catch (err) {
         console.error('Error:', err);
     }

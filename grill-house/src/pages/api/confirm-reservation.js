@@ -19,7 +19,7 @@ export default async function handler(req, res) {
                 res.writeHead(302, { Location: "/" });
                 res.end();
             } else {
-                res.status(404).send("Reservation not found or already confirmed.");
+                res.status(404).send("Reservation.js not found or already confirmed.");
             }
         } catch (error) {
             res.status(500).send("Error confirming reservation.");

@@ -1,6 +1,6 @@
 import { MongoClient } from "mongodb";
 
-const uri = process.env.MONGODB_URI;
+const uri = process.env.MONGODB_URI; // Should be mongodb://localhost:27017/grillhouse
 const options = {};
 
 let client;

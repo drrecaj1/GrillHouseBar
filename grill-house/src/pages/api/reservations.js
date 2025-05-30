@@ -1,6 +1,7 @@
-import clientPromise from "../../../lib/mongo";
 import nodemailer from "nodemailer";
 import { ObjectId } from "mongodb";
+import connectMongo from '../../lib/connectMongo';
+import Reservation from '../../models/Reservation';
 
 // Capitalize each word in a string
 const capitalizeWords = (str) =>
@@ -12,12 +13,9 @@ const capitalizeWords = (str) =>
 
 
 export default async function handler(req, res) {
+    await connectMongo();
     if (req.method === "POST") {
         try {
-            const client = await clientPromise;
-            const db = client.db("grillhouse");
-            const collection = db.collection("reservations");
-
             const {
                 fullName,
                 email,
@@ -45,8 +43,8 @@ export default async function handler(req, res) {
                 createdAt: new Date(),
             };
 
-            const result = await collection.insertOne(formattedReservation);
-            const reservationId = result.insertedId;
+            const reservation = await Reservation.create(formattedReservation);
+            const reservationId = reservation._id;
 
             // Send confirmation email
             const transporter = nodemailer.createTransport({
@@ -96,20 +94,13 @@ export default async function handler(req, res) {
             const { id, action } = req.query;
 
             if (!id) {
-                const client = await clientPromise;
-                const db = client.db("grillhouse");
-                const collection = db.collection("reservations");
-                const reservations = await collection.find({}).toArray();
+                const reservations = await Reservation.find({});
                 return res.status(200).json({ reservations });
             }
 
-            const client = await clientPromise;
-            const db = client.db("grillhouse");
-            const collection = db.collection("reservations");
-
             const newStatus = action === "cancel" ? "cancelled" : "confirmed";
 
-            const result = await collection.updateOne(
+            const result = await Reservation.updateOne(
                 { _id: new ObjectId(id) },
                 { $set: { status: newStatus } }
             );

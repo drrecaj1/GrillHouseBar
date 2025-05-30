@@ -66,7 +66,7 @@ const ReservationForm = () => {
             });
 
             if (response.ok) {
-                alert('Reservation submitted successfully!');
+                alert('Reservation.js submitted successfully!');
                 // Reset form
                 setFullName('');
                 setEmail('');

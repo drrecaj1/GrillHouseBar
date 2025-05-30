@@ -190,7 +190,7 @@ export default function AdminDashboard() {
                                 cursor: 'pointer',
                                 fontWeight: '600',
                                 boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
-                                transition: 'transform 0.2s ease, box-shadow 0.2s ease'
+                                transition: 'transform 0.2s ease, box-shadow 0.2s ease',
                             }}
                                     onMouseEnter={(e) => { e.currentTarget.style.transform = 'scale(1.05)'; e.currentTarget.style.boxShadow = '0 8px 20px rgba(0,0,0,0.12)'; }}
                                     onMouseLeave={(e) => { e.currentTarget.style.transform = 'scale(1)'; e.currentTarget.style.boxShadow = '0 4px 12px rgba(0,0,0,0.08)'; }}
