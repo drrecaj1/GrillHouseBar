@@ -2,6 +2,14 @@ import connectMongo from '../../lib/connectMongo';
 import Inquiry from '../../models/Inquiry';
 import nodemailer from 'nodemailer';
 
+function capitalizeWords(str) {
+    return str
+        .toLowerCase()
+        .split(' ')
+        .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+        .join(' ');
+}
+
 export default async function handler(req, res) {
     if (req.method !== 'POST') {
         return res.status(405).json({ message: 'Method not allowed' });
@@ -16,9 +24,12 @@ export default async function handler(req, res) {
     try {
         await connectMongo();
 
+        const capitalizedFullName = capitalizeWords(fullName);
+        const normalizedEmail = email.toLowerCase();
+
         await Inquiry.create({
-            fullName,
-            email,
+            fullName: capitalizedFullName,
+            email: normalizedEmail,
             phone,
             message,
             createdAt: new Date(),
@@ -36,15 +47,15 @@ export default async function handler(req, res) {
         const mailOptions = {
             from: process.env.EMAIL_USER,
             to: 'grillhousebar2011@gmail.com',
-            subject: `New Contact Inquiry from ${fullName}`,
+            subject: `New Contact Inquiry from ${capitalizedFullName}`,
             html: `
-        <h2>New Contact Inquiry</h2>
-        <p><strong>Name:</strong> ${fullName}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
-        <p><strong>Message:</strong><br/>${message.replace(/\n/g, '<br/>')}</p>
-        <p>📩 Submitted on: ${new Date().toLocaleString()}</p>
-      `
+                <h2>New Contact Inquiry</h2>
+                <p><strong>Name:</strong> ${capitalizedFullName}</p>
+                <p><strong>Email:</strong> ${normalizedEmail}</p>
+                <p><strong>Phone:</strong> ${phone || 'N/A'}</p>
+                <p><strong>Message:</strong><br/>${message.replace(/\n/g, '<br/>')}</p>
+                <p>📩 Submitted on: ${new Date().toLocaleString()}</p>
+            `
         };
 
         await transporter.sendMail(mailOptions);
@@ -55,5 +66,3 @@ export default async function handler(req, res) {
         res.status(500).json({ message: 'Internal server error' });
     }
 }
-
-

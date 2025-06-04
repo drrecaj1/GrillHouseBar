@@ -2,9 +2,9 @@ import styles from '@/styles/Gallery.module.css';
 
 const imagesTop = [
     "/media/photo1.jpg",
-    "/media/photo2.jpg",
+    "/media/photo10.jpg",
     "/media/photo3.jpg",
-    "/media/photo4.jpg"
+    "/media/photo12.jpg"
 ];
 
 const imagesBottom = [
