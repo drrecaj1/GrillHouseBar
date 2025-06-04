@@ -1,76 +1,68 @@
-@import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Bebas+Neue&family=Bree+Serif&family=Koulen&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
-
 .contactSection {
     scroll-margin-top: 60px;
     display: flex;
+    flex-wrap: wrap;
     width: 100%;
-    max-width: 1400px;
-    margin: 0 auto;
-    background-color: inherit;
     min-height: 550px;
 }
 
+/* Left side: contact info */
 .contactInfo {
-    width: 45%;
-    padding: 3rem 4rem;
+    width: 50%;
+    background-color: inherit; /* deep dark background */
+    color: white;
+    padding: 4rem;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 
+/* Right side: map */
 .mapContainer {
-    width: 55%;
-    height: 550px;
-    margin-top: 80px;
+    width: 50%;
+    height: auto;
+    padding-right: 2rem; /* ← this adds space on the right side */
+    box-sizing: border-box; /* ensures padding doesn't break layout */
+    padding-top: 20px;
 }
 
 .mapContainer iframe {
     width: 100%;
     height: 100%;
     border: 0;
-    margin-bottom: 20px;
+    border-radius: 12px; /* ← Rounded corners */
 }
 
+/* Typography and spacing */
 .sectionTitle {
-    text-align: left;
     font-size: 2.5rem;
-    margin-bottom: 2.5rem;
     font-family: 'Copperplate', sans-serif;
-    color: #000;
+    text-align: center;
+    margin-bottom: 2rem;
+    color: black;
+    position: relative;
+}
+
+.sectionTitle::after {
+    content: '';
+    display: block;
+    width: 350px;
+    height: 3px;
+    background-color: #ba3522;
+    margin: 0.5rem auto 0 auto;
 }
 
 .contactGrid {
     display: flex;
     flex-wrap: wrap;
     gap: 2rem;
-    justify-content: space-between;
+    justify-content: center;
+    text-align: center;
 }
 
 .contactItem {
     width: calc(50% - 1rem);
-    display: flex;
-    flex-direction: column;
 }
-
-.contactLabel {
-    font-size: 1.5rem;
-    color: #ba3522;
-    margin-bottom: 0.75rem;
-
-}
-
-.contactValue {
-    display: flex;
-    align-items: center;
-    font-size: 1rem;
-    color: #333;
-    font-family: sans-serif;
-}
-
-.icon {
-    margin-right: 0.75rem;
-    color: #666;
-    display: flex;
-    align-items: center;
-}
-
 .contactImage {
     display: block;
     margin-left: auto;
@@ -83,12 +75,19 @@
 
 }
 
-@media (max-width: 1200px) {
-    .contactInfo {
-        padding: 3rem 2rem;
-    }
+.contactLabel {
+    color: #ba3522;
+    font-size: 1.2rem;
+    font-weight: bold;
+    margin-bottom: 0.5rem;
 }
 
+.contactValue {
+    color: black;
+    font-size: 0.95rem;
+}
+
+/* Responsive layout */
 @media (max-width: 992px) {
     .contactSection {
         flex-direction: column;
@@ -100,26 +99,11 @@
 
     .mapContainer {
         height: 400px;
-    }
-    .sectionTitle {
-        text-align: center;
-    }
-}
+        padding-right: 0; /* ← this adds space on the right side */
 
-@media (max-width: 768px) {
-    .contactGrid {
-        grid-template-columns: 1fr;
     }
 
-    .contactImage {
-        max-width: 80%;
-        margin-top: 2rem;
-    }
-    .sectionTitle {
-        text-align: center;
-    }
-    .contactImage {
-        max-width: 220px;
-
+    .mapContainer iframe {
+        border-radius: 0; /* ← Rounded corners */
     }
 }

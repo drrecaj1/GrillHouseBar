@@ -33,6 +33,7 @@
     gap: 0.75rem;
     text-align: left;
     color: rgba(255, 255, 255, 0.77);
+    font-family: Copperplate;
 }
 
 .contactItem {
@@ -70,6 +71,7 @@
     color: #aaa;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
     padding-top: 1rem;
+    font-family: Copperplate;
 }
 
 .bottomRow span {

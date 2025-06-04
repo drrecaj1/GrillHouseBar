@@ -8,7 +8,7 @@ const HeroSection = () => {
                 <h1 className={styles.heading}>PEOPLE WHO LOVE TO EAT</h1>
                 <p className={styles.subheading}>ARE ALWAYS THE BEST PEOPLE.</p>
                 <p className={styles.subtitle}>
-                   GRILL HOUSE BAR
+                   "Perfect place to grill & chill"
                 </p>
                 <a href="#reservation">
                 <button className={styles.reserveBtn}>Reserve Now</button>

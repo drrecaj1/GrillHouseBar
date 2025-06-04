@@ -44,7 +44,7 @@ const ContactSection = () => {
                 </div>
 
                 <img
-                    src="/media/Grill House-12.png"
+                    src="/media/Grill House-carplate.png"
                     alt="Interior of Grill House"
                     className={styles.contactImage}
                 />
