@@ -1,4 +1,3 @@
-// ✅ pages/api/inquiries.js
 import connectMongo from '../../lib/connectMongo';
 import Inquiry from '../../models/Inquiry';
 

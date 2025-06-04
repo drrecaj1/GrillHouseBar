@@ -22,10 +22,58 @@ const actionButton = {
 
 function ReservationCard({ reservation, expanded, onToggle, onDelete, onStatusChange, onNotesChange }) {
     const [tempNotes, setTempNotes] = useState(reservation.notes || '');
+    const [isUpdating, setIsUpdating] = useState(false);
 
-    const handleSaveNotes = () => {
-        onNotesChange(tempNotes);
-        alert('Notes saved!');
+    const handleSaveNotes = async (e) => {
+        e.stopPropagation();
+        setIsUpdating(true);
+
+        try {
+            const response = await fetch(`/api/reservations/${reservation._id}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ notes: tempNotes })
+            });
+
+            if (response.ok) {
+                onNotesChange(tempNotes);
+                alert('Notes saved successfully!');
+            } else {
+                alert('Failed to save notes');
+            }
+        } catch (error) {
+            console.error('Error saving notes:', error);
+            alert('Error saving notes');
+        } finally {
+            setIsUpdating(false);
+        }
+    };
+
+    const handleStatusChange = async (e) => {
+        e.stopPropagation();
+        const newStatus = e.target.value;
+        setIsUpdating(true);
+
+        try {
+            const response = await fetch(`/api/reservations/${reservation._id}`, {
+                method: 'PATCH',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ status: newStatus })
+            });
+
+            if (response.ok) {
+                onStatusChange(newStatus);
+            } else {
+                alert('Failed to update status');
+                e.target.value = reservation.status;
+            }
+        } catch (error) {
+            console.error('Error updating status:', error);
+            alert('Error updating status');
+            e.target.value = reservation.status;
+        } finally {
+            setIsUpdating(false);
+        }
     };
 
     return (
@@ -53,7 +101,10 @@ function ReservationCard({ reservation, expanded, onToggle, onDelete, onStatusCh
                     <h3>{reservation.fullName}</h3>
                     <p>{reservation.startDate ? new Date(reservation.startDate).toLocaleString() : 'No date'}</p>
                     <p>Guests: {reservation.numberOfGuests}</p>
-                    <p>Status: <strong>{reservation.status}</strong></p>
+                    <p>Status: <strong style={{
+                        color: reservation.status === 'confirmed' ? '#10b981' :
+                            reservation.status === 'cancelled' ? '#ef4444' : '#facc15'
+                    }}>{reservation.status.charAt(0).toUpperCase() + reservation.status.slice(1)}</strong></p>
                 </div>
                 <button
                     onClick={(e) => e.stopPropagation()}
@@ -67,31 +118,76 @@ function ReservationCard({ reservation, expanded, onToggle, onDelete, onStatusCh
             </div>
 
             {expanded && (
-                <div style={{ marginTop: '1rem', borderTop: '1px solid #eee', paddingTop: '1rem' }}>
+                <div
+                    style={{ marginTop: '1rem', borderTop: '1px solid #eee', paddingTop: '1rem' }}
+                    onClick={(e) => e.stopPropagation()}
+                >
                     <p><strong>Email:</strong> {reservation.email}</p>
                     <p><strong>Dining Option:</strong> {reservation.diningOption}</p>
                     <p><strong>Event Type:</strong> {reservation.eventType}</p>
                     <p><strong>Special Requests:</strong> {reservation.specialRequests}</p>
-                    <div>
-                        <label>Status: </label>
-                        <select value={reservation.status} onChange={(e) => onStatusChange(e.target.value)} style={{ marginLeft: '0.5rem' }}>
+
+                    <div style={{ marginTop: '1rem' }}>
+                        <label><strong>Status:</strong> </label>
+                        <select
+                            value={reservation.status}
+                            onChange={handleStatusChange}
+                            disabled={isUpdating}
+                            style={{
+                                marginLeft: '0.5rem',
+                                padding: '0.25rem',
+                                opacity: isUpdating ? 0.6 : 1,
+                                cursor: isUpdating ? 'not-allowed' : 'pointer'
+                            }}
+                        >
                             <option value="pending">Pending</option>
-                            <option value="confirm">Confirmed</option>
+                            <option value="confirmed">Confirmed</option>
                             <option value="cancelled">Cancelled</option>
                         </select>
+                        {isUpdating && <span style={{ marginLeft: '0.5rem', fontSize: '0.9rem', color: '#666' }}>Updating...</span>}
                     </div>
+
                     <div style={{ marginTop: '1rem' }}>
-                        <label>Notes:</label>
+                        <label><strong>Notes:</strong></label>
                         <textarea
                             value={tempNotes}
                             onChange={(e) => setTempNotes(e.target.value)}
                             rows={3}
-                            style={{ width: '100%', marginTop: '0.5rem' }}
+                            disabled={isUpdating}
+                            style={{
+                                width: '100%',
+                                marginTop: '0.5rem',
+                                padding: '0.5rem',
+                                borderRadius: '4px',
+                                border: '1px solid #ccc',
+                                opacity: isUpdating ? 0.6 : 1
+                            }}
+                            placeholder="Add notes about this reservation..."
                         />
-                        <button onClick={handleSaveNotes} style={{ ...actionButton, marginTop: '0.5rem' }}>Save Notes</button>
+                        <button
+                            onClick={handleSaveNotes}
+                            disabled={isUpdating}
+                            style={{
+                                ...actionButton,
+                                marginTop: '0.5rem',
+                                opacity: isUpdating ? 0.6 : 1,
+                                cursor: isUpdating ? 'not-allowed' : 'pointer'
+                            }}
+                        >
+                            {isUpdating ? 'Saving...' : 'Save Notes'}
+                        </button>
                     </div>
+
                     <div style={{ marginTop: '1rem' }}>
-                        <button onClick={onDelete} style={{ ...actionButton, backgroundColor: '#e74c3c' }}>Delete</button>
+                        <button
+                            onClick={(e) => {
+                                e.stopPropagation();
+                                onDelete();
+                            }}
+                            style={{ ...actionButton, backgroundColor: '#e74c3c' }}
+                        >
+                            Delete
+                        </button>
                     </div>
                 </div>
             )}
@@ -107,6 +203,7 @@ export default function AdminReservations() {
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [visibleCount, setVisibleCount] = useState(5);
+    const [sortOrder, setSortOrder] = useState('desc');
     const [showForm, setShowForm] = useState(false);
     const [formData, setFormData] = useState({
         fullName: '',
@@ -150,9 +247,23 @@ export default function AdminReservations() {
         setExpandedId(prev => prev === id ? null : id);
     };
 
-    const handleDelete = (id) => {
+    const handleDelete = async (id) => {
         if (confirm("Are you sure you want to delete this reservation?")) {
-            setReservations(reservations.filter(r => r._id !== id));
+            try {
+                const response = await fetch(`/api/reservations/${id}`, {
+                    method: 'DELETE'
+                });
+
+                if (response.ok) {
+                    setReservations(reservations.filter(r => r._id !== id));
+                    alert('Reservation deleted successfully');
+                } else {
+                    alert('Failed to delete reservation');
+                }
+            } catch (error) {
+                console.error('Error deleting reservation:', error);
+                alert('Error deleting reservation');
+            }
         }
     };
 
@@ -179,7 +290,11 @@ export default function AdminReservations() {
             (!startDate || new Date(reservation.startDate) >= new Date(startDate)) &&
             (!endDate || new Date(reservation.startDate) <= new Date(endDate))
         )
-        .sort((a, b) => new Date(b.startDate) - new Date(a.startDate))
+        .sort((a, b) => {
+            const dateA = new Date(a.createdAt);
+            const dateB = new Date(b.createdAt);
+            return sortOrder === 'asc' ? dateA - dateB : dateB - dateA;
+        })
         .slice(0, visibleCount);
 
     return (
@@ -196,10 +311,27 @@ export default function AdminReservations() {
                         <option value="confirmed">Confirmed</option>
                         <option value="cancelled">Cancelled</option>
                     </select>
+                    <select value={sortOrder} onChange={(e) => setSortOrder(e.target.value)} style={inputStyle}>
+                        <option value="desc">Newest to Oldest</option>
+                        <option value="asc">Oldest to Newest</option>
+                    </select>
                     <input type="date" value={startDate} onChange={(e) => setStartDate(e.target.value)} style={inputStyle} />
                     <input type="date" value={endDate} onChange={(e) => setEndDate(e.target.value)} style={inputStyle} />
                     <button onClick={resetFilters} style={actionButton}>Reset Filters</button>
                     <button onClick={() => setShowForm(true)} style={actionButton}>+ Add Reservation</button>
+                </div>
+
+                <div style={{ marginBottom: '1rem', color: '#666', fontSize: '0.9rem' }}>
+                    Showing {filteredReservations.length} of {reservations.filter(reservation =>
+                    (statusFilter === 'All' || reservation.status === statusFilter) &&
+                    ((reservation.fullName && reservation.fullName.toLowerCase().includes(searchQuery.toLowerCase())) ||
+                        (reservation.phone && reservation.phone.includes(searchQuery))) &&
+                    (!startDate || new Date(reservation.startDate) >= new Date(startDate)) &&
+                    (!endDate || new Date(reservation.startDate) <= new Date(endDate))
+                ).length} reservations
+                    {searchQuery && ` matching "${searchQuery}"`}
+                    {statusFilter !== 'All' && ` (${statusFilter})`}
+                    {(startDate || endDate) && ` (filtered by date)`}
                 </div>
 
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
@@ -210,7 +342,7 @@ export default function AdminReservations() {
                             expanded={expandedId === reservation._id}
                             onToggle={() => toggleExpand(reservation._id)}
                             onDelete={() => handleDelete(reservation._id)}
-                            onStatusChange={(newStatus) => handleStatusChange(reservation._id, newStatus.toLowerCase())}
+                            onStatusChange={(newStatus) => handleStatusChange(reservation._id, newStatus)}
                             onNotesChange={(newNotes) => handleNotesChange(reservation._id, newNotes)}
                         />
                     ))}
@@ -222,7 +354,7 @@ export default function AdminReservations() {
                     </button>
                 )}
 
-                {/* Add Reservation.js Modal */}
+                {/* Add Reservation Modal */}
                 {showForm && (
                     <div style={{
                         position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
@@ -245,7 +377,7 @@ export default function AdminReservations() {
                                     }),
                                 });
                                 if (res.ok) {
-                                    alert('Reservation.js added!');
+                                    alert('Reservation added!');
                                     setShowForm(false);
                                     setFormData({
                                         fullName: '', email: '', numberOfGuests: '',
@@ -275,11 +407,11 @@ export default function AdminReservations() {
                                                 onChange={(e) => setFormData(prev => ({ ...prev, [field]: e.target.value }))}
                                                 style={{ width: '100%', padding: '0.5rem', borderRadius: '6px', border: '1px solid #ccc' }}
                                             >
-                                                <option value="birthday">Birthday</option>
-                                                <option value="business">Business Event</option>
-                                                <option value="officeparty">Office Party</option>
-                                                <option value="wedding">Wedding</option>
-                                                <option value="special">Special Occasion</option>
+                                                <option value="Birthday">Birthday</option>
+                                                <option value="Business Event">Business Event</option>
+                                                <option value="Office Party">Office Party</option>
+                                                <option value="Wedding">Wedding</option>
+                                                <option value="Special Occasion">Special Occasion</option>
                                             </select>
                                         ) : (
                                             <input

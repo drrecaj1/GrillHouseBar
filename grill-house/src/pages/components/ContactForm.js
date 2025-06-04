@@ -9,9 +9,13 @@ export default function ContactForm() {
         message: ''
     });
 
+
     const handleChange = (e) => {
         setFormData(prev => ({ ...prev, [e.target.name]: e.target.value }));
+
     };
+
+    const [successMessage, setSuccessMessage] = useState('');
 
     const handleSubmit = async (e) => {
         e.preventDefault();
@@ -23,8 +27,12 @@ export default function ContactForm() {
         });
 
         if (res.ok) {
-            alert('Your message has been sent!');
+            setSuccessMessage('Message sent! We’ll get back to you shortly.');
             setFormData({ fullName: '', email: '', phone: '', message: '' });
+
+            setTimeout(() => {
+                setSuccessMessage('');
+            }, 5000);
         } else {
             alert('There was an error. Please try again.');
         }
@@ -36,6 +44,13 @@ export default function ContactForm() {
             <p className={styles.subtitle}>
                 Write down your information and we will get back to you to answer any questions you may have.
             </p>
+
+            {successMessage && (
+                <div className={styles.successBanner}>
+                    {successMessage}
+                </div>
+            )}
+
             <form onSubmit={handleSubmit} className={styles.form}>
                 <div className={styles.inputGroup}>
                     <input
@@ -64,9 +79,16 @@ export default function ContactForm() {
                     <input
                         name="phone"
                         id="phone"
+                        type="tel"
+                        inputMode="numeric"
+                        pattern="[0-9]{7,15}"
+                        maxLength={15}
+                        required
                         placeholder="Phone Number"
                         value={formData.phone}
                         onChange={handleChange}
+                        onInvalid={(e) => e.target.setCustomValidity('Only numbers allowed. No spaces or letters.')}
+                        onInput={(e) => e.target.setCustomValidity('')}
                     />
                 </div>
 

@@ -1,4 +1,3 @@
-// components/HeroSection.js
 import styles from '@/styles/HeroSection.module.css';
 
 const HeroSection = () => {
@@ -9,10 +8,12 @@ const HeroSection = () => {
                 <h1 className={styles.heading}>PEOPLE WHO LOVE TO EAT</h1>
                 <p className={styles.subheading}>ARE ALWAYS THE BEST PEOPLE.</p>
                 <p className={styles.subtitle}>
-                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                    tempor incididunt ut labore et dolore!
+                   GRILL HOUSE BAR
                 </p>
+                <a href="#reservation">
                 <button className={styles.reserveBtn}>Reserve Now</button>
+                </a>
+
             </div>
         </section>
     );

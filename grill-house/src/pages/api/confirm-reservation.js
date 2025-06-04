@@ -15,7 +15,6 @@ export default async function handler(req, res) {
 
             );
             if (result.modifiedCount === 1) {
-                // Redirect to main page after confirmation
                 res.writeHead(302, { Location: "/" });
                 res.end();
             } else {

@@ -1,5 +1,3 @@
-/* AdminLayout.module.css */
-
 /* Main container for admin layout */
 .adminContainer {
     display: flex;
@@ -118,7 +116,7 @@
     overflow: hidden;
 }
 
-/* Main content area */
+
 .main {
     flex: 1;
     margin-left: 280px;
@@ -199,7 +197,7 @@
     color: #4b5563;
 }
 
-/* Content container */
+
 .content {
     padding: 1rem;
 }

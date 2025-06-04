@@ -1,4 +1,3 @@
-/* ContactSection.module.css */
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Bebas+Neue&family=Bree+Serif&family=Koulen&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
 .contactSection {
@@ -30,22 +29,22 @@
 }
 
 .sectionTitle {
-    font-family: 'Copperplate', sans-serif;
+    text-align: left;
     font-size: 2.5rem;
-    margin-bottom: 3rem;
+    margin-bottom: 2.5rem;
+    font-family: 'Copperplate', sans-serif;
     color: #000;
-    /*text-align: center;*/
-
 }
 
 .contactGrid {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    grid-row-gap: 2rem;
-    grid-column-gap: 2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 2rem;
+    justify-content: space-between;
 }
 
 .contactItem {
+    width: calc(50% - 1rem);
     display: flex;
     flex-direction: column;
 }
@@ -73,16 +72,13 @@
 }
 
 .contactImage {
-    max-width: 350px;  /* smaller width */
-    height: auto;
     display: block;
-    margin-top: 5rem;
-    /*margin: 1.5rem 0 0 1.5rem; !* 1rem left margin instead of 0 *!*/
-    /*margin: 1.5rem auto 0;*/
-    margin-left: 50px;        /* Align flush with the left */
-    margin-right: auto;    /* Push any extra space to the right */
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 2rem;
+    max-width: 350px;
+    height: auto;
     border-radius: 8px;
-
 
 
 }
@@ -105,10 +101,25 @@
     .mapContainer {
         height: 400px;
     }
+    .sectionTitle {
+        text-align: center;
+    }
 }
 
 @media (max-width: 768px) {
     .contactGrid {
         grid-template-columns: 1fr;
+    }
+
+    .contactImage {
+        max-width: 80%;
+        margin-top: 2rem;
+    }
+    .sectionTitle {
+        text-align: center;
+    }
+    .contactImage {
+        max-width: 220px;
+
     }
 }

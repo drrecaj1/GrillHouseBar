@@ -8,8 +8,8 @@ export default function AdminSidebar() {
     const router = useRouter();
 
     const handleLogout = async () => {
-        await fetch('/api/admin-logout');        // ✅ clear cookie
-        router.push('/admin/login');             // ✅ go to login page
+        await fetch('/api/admin-logout');        //  clear cookie
+        router.push('/admin/login');
     };
 
     return (

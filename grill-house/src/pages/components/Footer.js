@@ -40,7 +40,7 @@ const Footer = () => {
                     <span className={styles.credit}>
   Designed and developed by{" "}
                         <a
-                            href="https://www.linkedin.com/in/dea-rrecaj-4195b7230/"
+                            href="https://github.com/drrecaj1"
                             target="_blank"
                             rel="noopener noreferrer"
                             className={styles.creditLink}

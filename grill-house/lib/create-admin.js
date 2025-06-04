@@ -15,8 +15,8 @@ async function main() {
             useNewUrlParser: true,
             useUnifiedTopology: true,
         });
-        const username = 'Manager';
-        const password = 'grillhouse123';
+        const username = 'admin';
+        const password = 'Admin12';
         const hashedPassword = await bcrypt.hash(password, 10);
 
         const existing = await Admin.findOne({ username });

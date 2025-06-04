@@ -1,4 +1,3 @@
-// components/RestaurantInfoSection.js
 import styles from '@/styles/RestaurantInfoSection.module.css';
 
 const RestaurantInfoSection = () => {
@@ -8,18 +7,13 @@ const RestaurantInfoSection = () => {
                 <div className={styles.leftColumn}>
                     <div className={styles.restaurantStory}>
                         <h2 className={styles.storyTitle}>
-                            GRILL HOUSE STORY- A NEW RESTAURANT WITH AMAZING FLAVORS
+                            GRILL HOUSE STORY – TRADITION MEETS FLAVOR SINCE 2011
                         </h2>
                         <p className={styles.storyText}>
-                            Lorem ipsum dolor sit amet, consectetur adipiscing elit,
-                            sed do eiusmod tempor incididunt ut labore et dolore
-                            magna aliqua.
+                            At Grill House Bar, we offer a one-of-a-kind dining experience in the heart of Prishtina. Whether you're craving our curated set menus or prefer to bring your own food to grill, we provide the space, the fire, and the vibe.
                         </p>
                         <p className={styles.storyText}>
-                            Ut enim ad minim veniam, quis nostrud exercitation
-                            ullamco laboris nisi ut aliquip ex ea commodo
-                            consequat. Duis aute irure dolor in reprehenderit in
-                            voluptate velit esse cillum dolore eu fugiat nulla pariatur.
+                            Since 2011, we've built a home for food lovers who value flavor, freedom, and good company. Now, with our new online booking system, reserving your perfect spot is just a click away.
                         </p>
                     </div>
                 </div>
@@ -29,12 +23,20 @@ const RestaurantInfoSection = () => {
                         <h2 className={styles.logoText}><img className={styles.infoLogo} src={"/media/logo2.png"}/></h2>
                     </div>
 
-                    <div className={styles.openingHours}>
-                        <h2 className={styles.hoursTitle}>OPENING HOURS</h2>
-                        <p className={styles.hoursText}>Every day: 11:00 - 22:00</p>
-                        <p className={styles.hoursText}>Kitchen open everyday until 20:00</p>
-                        <button className={styles.reserveBtn}>Reserve Now</button>
+                    <div className={styles.howto}>
+                        <h2 className={styles.howtoTitle}>HOW IT WORKS</h2>
+                        <p className={styles.howtoText}>
+                            Bring your own food and we’ll get the grill going for you — just sit back and enjoy the outdoor vibe.
+                        </p>
+                        <p className={styles.howtoText}>
+                            Not in the mood to prep? Choose one of our ready-to-go traditional set menus, made fresh and priced per person.
+                        </p>
+                        <p className={styles.howtoText}>
+                            Cold drinks, cozy atmosphere, and great company — always included.
+                        </p>
+                        <a href="#reservation"> <button className={styles.reserveBtn}>Reserve Now</button> </a>
                     </div>
+
 
                 </div>
             </div>

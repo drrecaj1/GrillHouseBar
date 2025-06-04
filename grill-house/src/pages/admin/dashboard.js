@@ -62,7 +62,7 @@ export default function AdminDashboard() {
                 data: [pending, confirmed, cancelled],
                 backgroundColor: ['#facc15', '#10b981', '#ef4444'],
                 borderWidth: 1,
-                borderRadius: 8, // 👈 soft rounded top
+                borderRadius: 8,
 
             },
         ],
@@ -213,7 +213,7 @@ export default function AdminDashboard() {
                         padding: '2rem',
                         borderRadius: '24px',
                         boxShadow: '0 10px 15px rgba(0,0,0,0.1)',
-                        height: '450px', // 👈 Fixed height
+                        height: '450px',
                         display: 'flex',
                         alignItems: 'center'
                     }}

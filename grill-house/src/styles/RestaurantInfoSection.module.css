@@ -1,6 +1,7 @@
-/* styles/RestaurantInfoSection.module.css */
+@import url('https://fonts.googleapis.com/css2?family=Unna:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 .infoSection {
-    scroll-margin-top: 30px;
+    scroll-margin-top: 10px;
     background-color: #f8f5e9;
     padding: 30px;
     width: 100%;
@@ -48,6 +49,7 @@
     margin-bottom: 30px;
     line-height: 1.2;
     text-transform: uppercase;
+
 }
 
 .storyText {
@@ -73,7 +75,7 @@
     color: #000;
 }
 
-.openingHours {
+.howto {
     background-color: #3a614d;
     color: white;
     padding: 60px 40px;
@@ -82,17 +84,18 @@
     justify-content: center;
 }
 
-.hoursTitle {
-    font-size: 2.5rem;
-    font-weight: 700;
-    margin-bottom: 30px;
-    text-transform: uppercase;
+.howtoTitle {
+    font-size: 20px;
+    font-weight: bold;
+    color: #ffffff;
+    margin-bottom: 1rem;
 }
 
-.hoursText {
-    font-size: 1.1rem;
-    margin-bottom: 10px;
+.howtoText {
+    font-size: 13px;
     line-height: 1.6;
+    color: #ffffff;
+    margin-bottom: 0.75rem;
 }
 
 .reserveBtn {

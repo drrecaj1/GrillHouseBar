@@ -1,7 +1,8 @@
-/* styles/HeroSection.module.css */
 .hero {
     width: 100%;
     height: 100vh;
+    max-width: 100vw;
+    overflow-x: hidden;
     position: relative;
     display: flex;
     justify-content: center;
@@ -25,7 +26,7 @@
     z-index: 1;
 }
 
-/* For Next.js Image component alternative */
+
 .imageWrapper {
     position: absolute;
     top: 0;

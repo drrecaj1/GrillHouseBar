@@ -92,3 +92,12 @@
     text-shadow: 0 0 5px #f87171;
     cursor: pointer;
 }
+
+
+@media (max-width: 565px) {
+
+    .bottomRow {
+        justify-content: center;
+        text-align: center;
+    }
+}

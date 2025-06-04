@@ -8,7 +8,12 @@ const ReservationSchema = new mongoose.Schema({
     eventType: { type: String, default: 'N/A' },
     specialRequests: { type: String, default: 'None' },
     startDate: { type: Date, required: true },
-    status: { type: String, default: 'pending' },
+    status: {
+        type: String,
+        enum: ['pending', 'confirmed', 'cancelled'],
+        default: 'pending'
+    },
+    notes: { type: String, default: '' },
     createdAt: { type: Date, default: Date.now }
 });
 

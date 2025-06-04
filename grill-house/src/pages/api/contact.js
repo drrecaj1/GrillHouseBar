@@ -1,4 +1,3 @@
-// ✅ /pages/api/contact.js
 import connectMongo from '../../lib/connectMongo';
 import Inquiry from '../../models/Inquiry';
 import nodemailer from 'nodemailer';

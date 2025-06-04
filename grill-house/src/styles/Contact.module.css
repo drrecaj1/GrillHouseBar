@@ -5,13 +5,13 @@
     padding: 5rem 0 0 0;
     background-image: url("/media/Grill House-formbckg.png");
     background-repeat: no-repeat;
-    background-position: center top 80px; /* 👈 shift image down */
+    background-position: center top 80px;
     background-size: cover;
 
 }
 
 .contactSection form {
-    padding-bottom: 6rem; /* enough space above the footer */
+    padding-bottom: 6rem;
 }
 
 
@@ -21,9 +21,9 @@
     text-align: center;
     margin-bottom: 2rem;
     line-height: 1.6;
-    font-family: 'Inter', sans-serif; /* or any other font */
+    font-family: 'Inter', sans-serif;
     font-weight: 400;
-    font-style: italic; /* optional: adds a nice tone */
+    font-style: italic;
 }
 
 
@@ -101,4 +101,26 @@
     font-weight: bold;
     color: rgba(51, 51, 51, 0.55);
     opacity: 1;
+}
+
+.successBanner {
+    background-color: #d1fae5;
+    color: #065f46;
+    font-weight: 600;
+    padding: 1rem;
+    border-radius: 8px;
+    text-align: center;
+    margin: 1rem auto;
+    border: 1px solid #6ee7b7;
+    max-width: 600px;
+    width: 100%;
+}
+
+@media (max-width: 600px) {
+    .contactSection {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 70px 20px;
+
+    }
 }

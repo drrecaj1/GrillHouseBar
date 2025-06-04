@@ -3,13 +3,18 @@ import { ObjectId } from "mongodb";
 import connectMongo from '../../lib/connectMongo';
 import Reservation from '../../models/Reservation';
 
-// Capitalize each word in a string
-const capitalizeWords = (str) =>
-    str
+const capitalizeWords = (str) => {
+    if (!str) return '';
+
+    return str
+        .replace(/([a-z])([A-Z])/g, '$1 $2')
+        .replace(/[_-]/g, ' ')
         .toLowerCase()
         .split(' ')
+        .filter(Boolean)
         .map(word => word.charAt(0).toUpperCase() + word.slice(1))
         .join(' ');
+};
 
 
 export default async function handler(req, res) {
@@ -33,16 +38,19 @@ export default async function handler(req, res) {
             // Format data for storage
             const formattedReservation = {
                 fullName: capitalizeWords(fullName),
-                email,
+                email: email.toLowerCase(),
                 numberOfGuests,
-                diningOption: capitalizeWords(diningOption || 'Bring Your Own Food'),
-                eventType: capitalizeWords(eventType || 'N/A'),
+                diningOption,
+                eventType,
                 specialRequests: specialRequests || 'None',
                 startDate,
                 status: 'pending',
+                notes: '',
                 createdAt: new Date(),
             };
 
+
+            console.log("🚀 Received reservation data:", formattedReservation);
             const reservation = await Reservation.create(formattedReservation);
             const reservationId = reservation._id;
 
@@ -89,7 +97,7 @@ export default async function handler(req, res) {
             res.status(500).json({ message: "Error saving reservation", error: error.message });
         }
     } else if (req.method === "GET") {
-        // For confirmation or cancellation link
+
         try {
             const { id, action } = req.query;
 

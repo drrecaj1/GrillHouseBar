@@ -1,17 +1,20 @@
 /* styles/globals.css */
 @import url('https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Anton&family=Bebas+Neue&family=Bree+Serif&family=Koulen&family=Playfair+Display+SC:ital,wght@0,400;0,700;0,900;1,400;1,700;1,900&family=Quantico:ital,wght@0,400;0,700;1,400;1,700&display=swap');
 
+
 html, body{
   scroll-behavior: smooth;
-  overflow-x: hidden;
+  overflow-x: hidden !important;
 }
 
-/* Reset some default styles */
+
+
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
+
 
 body {
   font-family: 'Copperplate', sans-serif;
@@ -33,6 +36,92 @@ button {
 .container {
   width: 100%;
   margin: 0 auto;
-  /*padding: 20px;*/
+
 }
 
+/* Main DatePicker container */
+.react-datepicker {
+  font-family: 'Copperplate', sans-serif;
+  font-size: 13px;
+  border: 1px solid #ccc;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  padding: 10px 0;
+  background-color: #fff;
+}
+
+/* Month/year header */
+.react-datepicker__current-month {
+  font-weight: bold;
+  font-size: 15px;
+  padding: 6px 0;
+}
+
+.react-datepicker__day-names,
+.react-datepicker__week {
+  margin: 0 8px;
+}
+
+/* Day cells */
+.react-datepicker__day {
+  padding: 0.5rem;
+  margin: 0.1rem;
+  border-radius: 8px;
+  transition: background-color 0.2s ease;
+}
+
+.react-datepicker__day:hover {
+  background-color: #eee;
+}
+
+/* Selected day */
+.react-datepicker__day--selected {
+  background-color: #b42e22;
+  color: #fff;
+}
+
+/* Today highlight */
+.react-datepicker__day--today {
+  border-bottom: 2px solid #b42e22;
+}
+
+/* Time container */
+.react-datepicker__time-container {
+  border-left: 1px solid #ddd;
+}
+
+.react-datepicker__time {
+  padding: 0;
+}
+
+.react-datepicker__time-list-item {
+  padding: 6px 10px;
+  font-size: 12px;
+  transition: background-color 0.2s ease;
+}
+
+.react-datepicker__time-list-item:hover {
+  background-color: #f2f2f2;
+}
+
+.react-datepicker__time-list-item--selected {
+  background-color: #b42e22;
+  color: white;
+}
+
+/* Navigation arrows */
+.react-datepicker__navigation {
+  top: 12px;
+  width: 24px;
+  height: 24px;
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #333;
+}
+
+/* Hide disabled time slots in time picker */
+.react-datepicker__time-list-item--disabled {
+  display: none !important;
+}
