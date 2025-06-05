@@ -174,6 +174,8 @@ Follow the prompts to set username and password.
 
 ## 7. Seeding Test Data (Optional)
 
+To insert test reservation and inquries data, run the seed data file. This will allow you to fully test out the admin portal.
+
 ```bash
 node src/scripts/seedData.js
 ```
